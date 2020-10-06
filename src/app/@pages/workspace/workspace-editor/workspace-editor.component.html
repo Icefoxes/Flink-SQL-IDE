@@ -1,0 +1,30 @@
+<div class="editor-container-root">
+    <div class="tab-container">
+        <div class="tab" *ngFor="let tab of tabs$ | async" [ngClass]="{'tab-active': tab?.active}">
+            <div class="selectable" (click)="ActivateTab(tab)">
+                <svg-icon class="prefix-icon" [src]="tab | TabFileIcon"
+                    [svgStyle]="{ 'width.px':10, 'height.px':10, 'margin-top': 4 }"></svg-icon>
+                <span class="text noselect">{{tab?.title}}</span>
+            </div>
+            <mat-icon class="action-icon" aria-hidden="false" aria-label="close icon" (click)="CloseTab(tab)"
+                [ngStyle]="{'margin-left': -tab.title.length * 0.25 + 'rem'}">close
+            </mat-icon>
+        </div>
+    </div>
+    <section class="editor-container">
+        <ngx-monaco-editor (drop)="onDrop($event)" (dragover)="onDragOver($event)" class="editor"
+            [options]="editorOptions$ | async" [(ngModel)]="code" (init)="editorInit($event)"
+            [ngClass]="{'editor-active': (hasTabs$ | async), 'show-editor': showDiff}">
+        </ngx-monaco-editor>
+
+        <ngx-monaco-diff-editor [options]="differEditorOptions" [original]="originalCode" [modified]="modifiedCode"
+            class="editor" [ngClass]="{'editor-active': showDiff}">
+        </ngx-monaco-diff-editor>
+
+        <svg-icon class="logo-icon" src="../../../../assets/icons/flink.svg"
+            [svgStyle]="{  'transform': 'scale(0.2) translate(200px, -1800px)'}" *ngIf="!(hasTabs$ | async)">
+        </svg-icon>
+
+        <app-terminal *ngIf="showTerminal" (toggleTerminal)="toggleTerminal()" class="editor-terminal"></app-terminal>
+    </section>
+</div>

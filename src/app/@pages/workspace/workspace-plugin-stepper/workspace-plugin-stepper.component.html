@@ -1,0 +1,83 @@
+<mat-horizontal-stepper linear #stepper>
+    <mat-step class="stepper-content">
+        <ng-template matStepLabel>Basic Properties</ng-template>
+        <app-workspace-plugin-kafka #kafka style="display: flex;justify-content: center;" *ngIf="from === 'Kafka'">
+        </app-workspace-plugin-kafka>
+        <app-workspace-plugin-filesystem #fs style="display: flex;justify-content: center;" *ngIf="from === 'File System'">
+        </app-workspace-plugin-filesystem>
+        <app-workspace-plugin-jdbc #jdbc style="display: flex;justify-content: center;" *ngIf="from === 'JDBC'">
+        </app-workspace-plugin-jdbc>
+        <div class="stepper-action">
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step>
+        <form class="table-form" [formGroup]="columnForm">
+            <ng-template matStepLabel>Design Table</ng-template>
+
+            <div>
+                <mat-form-field class="col-field">
+                    <mat-label>Column Name</mat-label>
+                    <input matInput formControlName="name" placeholder="Column Name">
+                </mat-form-field>
+
+                <mat-form-field class="col-field">
+                    <mat-label>Data Type</mat-label>
+                    <mat-select formControlName="type">
+                        <mat-option *ngFor="let type of types" [value]="type">{{type}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <button mat-button color="primary" (click)="onAdd()">Add</button>
+            </div>
+            <div>
+                <table mat-table [dataSource]="dataSource" class="table-container">
+
+                    <!--- Note that these columns can be defined in any order.
+                          The actual rendered columns are set as a property on the row definition" -->
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="position">
+                        <th mat-header-cell *matHeaderCellDef> No. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="type">
+                        <th mat-header-cell *matHeaderCellDef> Data Type </th>
+                        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+            </div>
+            <div class="stepper-action">
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <form [formGroup]="finalForm" class="final-form">
+            <ng-template matStepLabel>Done</ng-template>
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="tableName" placeholder="Table Name" required>
+            </mat-form-field>
+
+            <button mat-button color="primary" (click)="onFinished()">Finished</button>
+            <div class="stepper-action">
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+        </form>
+    </mat-step>
+</mat-horizontal-stepper>

@@ -1,0 +1,26 @@
+<div class="files-container">
+    <div class="files-header">
+        <span class="noselect">Explorer</span>
+    </div>
+
+    <div class="files-files">
+        <div class="info-header" (click)="toggleResouce()">
+            <svg-icon class="icon" [src]="showFiles | ArrowDirectionPipe"></svg-icon>
+            <span class="noselect">Projects</span>
+        </div>
+
+        <div class="files-files-content" *ngIf="showFiles">
+            <app-workspace-tree (menuItem)="OnMenuItem($event)" [data]="projects$"></app-workspace-tree>
+        </div>
+    </div>
+
+    <div class="files-diagram">
+        <div class="info-header session" (click)="toggleDigram()">
+            <svg-icon class="icon" [src]="showResources | ArrowDirectionPipe"></svg-icon>
+            <span class="noselect">Resouces</span>
+        </div>
+        <div class="files-diagram-content" *ngIf="showResources">
+            <app-workspace-tree (menuItem)="OnMenuItem($event)" [data]="resources$"></app-workspace-tree>
+        </div>
+    </div>
+</div>

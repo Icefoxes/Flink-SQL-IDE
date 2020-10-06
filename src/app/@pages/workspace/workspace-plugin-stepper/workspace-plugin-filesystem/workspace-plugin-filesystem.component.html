@@ -1,0 +1,16 @@
+<form [formGroup]="propsForm" class="props-form">
+    <p>
+        <mat-form-field>
+            <mat-label>Path</mat-label>
+            <input matInput placeholder="path:///c:/tmp" formControlName="path">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <mat-label>Formats</mat-label>
+            <mat-select formControlName="format">
+                <mat-option *ngFor="let format of formats" value="{{format}}">{{format}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+</form>

@@ -1,0 +1,23 @@
+server:
+  port: 9000
+spring:
+  datasource: jdbc:h2:~/data
+  driver-class-name: org.h2.Driver
+  username: sa
+  password: 123456
+
+  jpa:
+    database: h2
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hawtio,jolokia
+hawtio:
+  authenticationEnabled: false

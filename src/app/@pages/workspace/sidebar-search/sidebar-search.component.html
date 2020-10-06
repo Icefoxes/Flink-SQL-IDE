@@ -1,0 +1,22 @@
+<div class="files-container">
+    <div class="files-header">
+        <span class="noselect">Search</span>
+        <div class="action-items">
+            <svg-icon class="icon" src="../../../assets/icons/sidebar/search/refresh.svg"></svg-icon>
+            <svg-icon class="icon" src="../../../assets/icons/sidebar/search/collapse.svg"></svg-icon>
+            <svg-icon class="icon" src="../../../assets/icons/sidebar/search/clear.svg"></svg-icon>
+        </div>
+    </div>
+
+    <section class="search-content">
+        <svg-icon class="prefix-icon" [src]="showReplace | ArrowDirectionPipe"></svg-icon>
+        <div class="input-container">
+            <input type="text" class="input-text" spellcheck="false" [(ngModel)]="searchText">
+            <div class="action-items">
+                <svg-icon class="icon" src="../../../assets/icons/sidebar/search/match.case.svg"></svg-icon>
+                <svg-icon class="icon" src="../../../assets/icons/sidebar/search/regular.svg"></svg-icon>
+            </div>
+        </div>
+
+    </section>
+</div>

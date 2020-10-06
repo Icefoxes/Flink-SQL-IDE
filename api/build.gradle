@@ -1,0 +1,75 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.3.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+}
+
+group = 'com.spyduck'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+}
+
+ext {
+    drools = '7.43.1.Final'
+    lombok = '1.18.12'
+
+
+    flink = '1.11.2'
+    scala = '2.12'
+}
+
+dependencies {
+    // Flink
+    implementation "org.apache.flink:flink-table-common:${flink}"
+    implementation "org.apache.flink:flink-table-api-java-bridge_${scala}:${flink}"
+    implementation "org.apache.flink:flink-table-planner-blink_${scala}:${flink}"
+    implementation "org.apache.flink:flink-streaming-scala_${scala}:${flink}"
+    implementation "org.apache.flink:flink-clients_${scala}:${flink}"
+    implementation "org.apache.flink:flink-connector-kafka_${scala}:${flink}"
+    implementation "org.apache.flink:flink-json:${flink}"
+    // F
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
+    // zookeeper
+    implementation 'org.apache.zookeeper:zookeeper:3.6.2'
+
+    // kafka
+    implementation 'org.apache.kafka:kafka_2.12:2.6.0'
+    implementation 'org.apache.kafka:kafka-clients:2.6.0'
+
+    // h2 database
+    runtimeOnly 'com.h2database:h2'
+
+    // Swagger
+    implementation "io.springfox:springfox-boot-starter:3.0.0"
+
+    // lombok
+    compileOnly "org.projectlombok:lombok:${lombok}"
+    annotationProcessor "org.projectlombok:lombok:${lombok}"
+    testCompileOnly "org.projectlombok:lombok:${lombok}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombok}"
+
+    // DevTools
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // test
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    implementation 'org.jsonschema2pojo:jsonschema2pojo-core:1.0.2'
+    implementation 'org.eclipse.jgit:org.eclipse.jgit:5.9.0.202009080501-r'
+
+}
+
+test {
+    useJUnitPlatform()
+}

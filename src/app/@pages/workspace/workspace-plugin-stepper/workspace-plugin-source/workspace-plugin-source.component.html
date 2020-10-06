@@ -1,0 +1,8 @@
+<section class="datasource-container">
+    <div class="datasource-item" *ngFor="let item of items">
+        <a [routerLink]="[ '/apps/workspace/stepper', {connector: item.type, type: type} ]">
+            <svg-icon [src]="'../../../../../assets/icons/datasource/' + item.icon"></svg-icon>
+        </a>
+        <span class="text">{{item.type}}</span>
+    </div>
+</section>

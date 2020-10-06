@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Create New Project</h1>
+<div mat-dialog-content class="content">
+    <mat-form-field>
+        <mat-label>Project Name</mat-label>
+        <input matInput [(ngModel)]="data.name" spellcheck="false">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions class="actions">
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Ok</button>
+</div>

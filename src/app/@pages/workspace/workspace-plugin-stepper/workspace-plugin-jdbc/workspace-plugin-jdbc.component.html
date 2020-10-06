@@ -1,0 +1,14 @@
+<form [formGroup]="propsForm" class="props-form">
+    <p>
+        <mat-form-field>
+            <mat-label>URL</mat-label>
+            <input matInput placeholder="jdbc:mysql://localhost:3306/mydatabase" formControlName="url">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <mat-label>Table Name</mat-label>
+            <input matInput placeholder="users" formControlName="table-name">
+        </mat-form-field>
+    </p>
+</form>

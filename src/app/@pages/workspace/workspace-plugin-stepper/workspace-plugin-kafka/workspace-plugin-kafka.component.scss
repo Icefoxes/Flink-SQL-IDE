@@ -1,0 +1,13 @@
+.props-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+
+    .mat-form-field {
+        display: inline-block;
+        position: relative;
+        text-align: left;
+        width: 300px;
+    }
+}

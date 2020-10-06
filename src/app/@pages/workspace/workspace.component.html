@@ -1,0 +1,31 @@
+<div class="workspace-editor-container">
+    <app-workspace-header></app-workspace-header>
+    <div class="workspace-content">
+        <app-sidebar (toggleSidebar)="onToggleSidebar($event)"></app-sidebar>
+        <section [ngSwitch]="activeSideBar" class="sidebar-content" *ngIf="activeSideBar !== ''">
+            <div *ngSwitchCase="'Explorer'">
+                <app-sidebar-files></app-sidebar-files>
+            </div>
+            <div *ngSwitchCase="'Search'">
+                <app-sidebar-search></app-sidebar-search>
+            </div>
+            <div *ngSwitchCase="'Session'">
+                <app-sidebar-extension></app-sidebar-extension>
+            </div>
+            <div *ngSwitchCase="'Review'">
+                <app-sidebar-review></app-sidebar-review>
+            </div>
+            <div *ngSwitchCase="'Setting'">
+                <app-sidebar-setting></app-sidebar-setting>
+            </div>
+            <div *ngSwitchDefault style="display: none;">
+            </div>
+        </section>
+        <div class="editor-content">
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+    <section class="status-bar">
+    </section>
+</div>

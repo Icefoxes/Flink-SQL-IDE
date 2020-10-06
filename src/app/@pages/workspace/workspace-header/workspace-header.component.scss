@@ -1,0 +1,38 @@
+@import "../../../@core/style/variable";
+
+.workspace-header-container {
+    background-color: $background;
+    height: $header-height;
+    width: 100%;
+
+    .logo-container {
+        display: flex;
+        width: 10rem;
+
+        .logo {
+            margin: 0.4rem 1rem;
+            height: $logo-size;
+            width: $logo-size;
+        }
+
+        span {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            font-size: $font-size;
+            color: $logo-color;
+        }
+    }
+
+    .logo-container:hover span {
+        display: flex;
+    }
+
+    .logo-container:hover {
+        background-color: $background-hover;
+        transition: 0.2s ease;
+        -webkit-transition: 0.2s ease;
+        border-radius: 0 1.5rem 1.5rem 0;
+        padding: 0 2rem 0 0;
+    }
+}

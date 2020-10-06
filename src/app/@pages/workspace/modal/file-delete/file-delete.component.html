@@ -1,0 +1,7 @@
+<h1 mat-dialog-title>Do You Want To Delete This Job?</h1>
+<div mat-dialog-content class="content">
+</div>
+<div mat-dialog-actions class="actions">
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Ok</button>
+</div>

@@ -1,0 +1,26 @@
+@import "../../../@core/style/variable";
+
+.icon-container {
+    height: calc(100vh - #{$header-height});
+    background-color: $sidebar-bg;
+    display: flex;
+    flex-direction: column;
+
+    .icon-sub {
+        width: $space;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        transform: scale(0.6);
+        margin: 0.5rem 0;
+        cursor: pointer;
+        .icon {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .icon-sub:hover .icon {
+        color: white;
+    }
+}

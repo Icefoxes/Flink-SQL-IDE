@@ -1,0 +1,53 @@
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <mat-tree-node matTreeNodePaddingIndent="20" *matTreeNodeDef="let node" matTreeNodePadding
+        [attr.data-name]="node?.name" [attr.data-node]="node?.nodeType">
+        <div class="selectable" (drag)="OnDrag($event)" [draggable]="node | NodeDrag"
+            (click)="OnUserClick(node?.name, node?.nodeType)" (contextmenu)="open($event, node)">
+            <img [src]="node | NodeIcon : treeControl.isExpanded(node)" class="prefix-icon noselect">
+            <span class="text noselect"> {{node.name}}</span>
+        </div>
+        <div class="action-icons">
+            <svg-icon class="action-icon" src="../../../../assets/icons/actions/new_file.svg" data-action="add"
+                *ngIf="canAdd(node)">
+            </svg-icon>
+            <svg-icon class="action-icon" src="../../../../assets/icons/actions/edit.svg" data-action="edit"
+                *ngIf="canEdit(node)">
+            </svg-icon>
+            <svg-icon class="action-icon" src="../../../../assets/icons/actions/trash.svg" data-action="delete"
+                *ngIf="canDelete(node)">
+            </svg-icon>
+        </div>
+    </mat-tree-node>
+    <!-- This is the tree node template for expandable nodes -->
+    <mat-tree-node matTreeNodePaddingIndent="20" *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding
+        [attr.data-name]="node?.name" [attr.data-node]="node?.nodeType">
+        <div class="selectable" matTreeNodeToggle (dragstart)="OnDrag($event)" [draggable]="node | NodeDrag"
+            (click)="OnUserClick(node?.name, node?.nodeType)" (contextmenu)="open($event, node)">
+            <mat-icon class="mat-icon-rtl-mirror noselect">
+                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+            <img [src]="node | NodeIcon : treeControl.isExpanded(node)" class="prefix-icon noselect">
+            <span class="text noselect"> {{node.name}}</span>
+        </div>
+
+        <div class="action-icons">
+            <svg-icon class="action-icon" src="../../../../assets/icons/actions/new_file.svg" data-action="add"
+                *ngIf="canAdd(node)">
+            </svg-icon>
+            <svg-icon class="action-icon" src="../../../../assets/icons/actions/edit.svg" data-action="edit"
+                *ngIf="canEdit(node)">
+            </svg-icon>
+            <svg-icon class="action-icon" src="../../../../assets/icons/actions/trash.svg" data-action="delete"
+                *ngIf="canDelete(node)">
+            </svg-icon>
+        </div>
+    </mat-tree-node>
+</mat-tree>
+
+<ng-template #userMenu let-node>
+    <section class="user-menu">
+        <span class="text" (click)="onToggleEdit(node)">Edit File</span>
+        <span class="text" (click)="onSelect(node)">Select</span>
+        <span class="text" (click)="onInsert(node)">Insert Properties</span>
+    </section>
+</ng-template>

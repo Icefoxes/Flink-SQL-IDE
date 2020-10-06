@@ -1,0 +1,89 @@
+@import "../../../../@core/style/variable";
+
+.user-menu {
+    height: 60px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    background-color: #252525;
+    padding: 5px;
+    -webkit-box-shadow: 3px 2px 3px 0px rgba(22, 22, 22, 1);
+    -moz-box-shadow: 3px 2px 3px 0px rgba(22, 22, 22, 1);
+    box-shadow: 3px 2px 3px 0px rgba(22, 22, 22, 1);
+    .text {
+        color: #cccccc;
+        font-size: 0.8rem;
+        transform: scale(0.6);
+        -webkit-transform-origin-x: 0;
+        margin-top: 0.1rem;
+    }
+
+    .text:hover {
+        background-color: #094771;
+    }
+}
+
+mat-tree {
+    background-color: #252525;
+
+    mat-tree-node {
+        min-height: 1rem;
+        position: relative;
+        .selectable {
+            width: 100%;
+            display: flex;
+            align-items: center;
+
+            .prefix-icon {
+                width: 10px;
+                height: 10px;
+                display: inline-block;
+                margin: 0 0.3rem;
+            }
+        }
+
+        .action-icons {
+            display: flex;
+            align-items: center;
+            visibility: hidden;
+            position: absolute;
+            right: 0;
+            margin: 0 1rem;
+            z-index: 4;
+
+            .action-icon {
+                margin: 0 0.2rem;
+                display: flex;
+            }
+        }
+
+        .text {
+            font-size: 0.8rem;
+            transform: scale(0.6);
+            -webkit-transform-origin-x: 0;
+            margin-top: 0.1rem;
+        }
+
+        mat-icon {
+            font-size: 1rem;
+            transform: scale(0.85);
+            -webkit-transform-origin-x: 0;
+            margin: 0 0 0 0.2rem;
+            height: 12px;
+            width: 12px;
+        }
+    }
+
+    .text,
+    mat-icon {
+        color: #cccccc;
+    }
+
+    mat-tree-node:hover {
+        background-color: #2a2d2e;
+    }
+
+    mat-tree-node:hover .action-icons {
+        visibility: visible;
+    }
+}

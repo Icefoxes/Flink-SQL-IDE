@@ -1,0 +1,78 @@
+@import "../../../@core/style/variable";
+
+.editor-container-root {
+    background-color: #1e1e1e;
+    position: relative;
+    height: calc(100vh - #{$header-height});
+    z-index: 1;
+    .tab-container {
+        height: $tab-height;
+        .tab {
+            display: flex;
+            float: left;
+            padding: 0 1rem;
+            background-color: $tab-bg;
+            height: 100%;
+
+            .selectable {
+                display: flex;
+                float: left;
+                .text {
+                    font-size: 1rem;
+                    margin: 0 0.5rem;
+                    transform: scale(0.5);
+                    -webkit-transform-origin-x: 0;
+                }
+            }
+            .action-icon,
+            .text {
+                color: #f1ffff;
+            }
+            .action-icon {
+                visibility: hidden;
+                font-size: 1rem;
+                height: 1rem;
+                width: 1rem;
+                /* -webkit-transform-origin-x: 0; */
+                transform: scale(0.7);
+        
+                margin-top: 0.12rem;
+            }
+        }
+
+        .tab-active {
+            background-color: $tab-bg-active;
+        }
+
+        .tab:hover .action-icon {
+            visibility: visible;
+        }
+    }
+
+    .editor-container {
+        position: relative;
+        .editor {
+            display: none;
+            height: calc(100vh - 3rem - 2rem);
+            width: 100%;
+        }
+
+        .editor-active {
+            height: calc(100vh - 3rem - 2rem);
+            width: 100%;
+            display: flex;
+        }
+
+        .show-editor {
+            display: none;
+        }
+
+        .editor-terminal {
+            position: absolute;
+            z-index: 2;
+            bottom: 0rem;
+            left: 0;
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,48 @@
+<form [formGroup]="propsForm" class="props-form">
+    <p>
+        <mat-form-field>
+            <mat-label>Bootstrap Servers</mat-label>
+            <input matInput placeholder="localhost:9092" formControlName="properties.bootstrap.servers">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <mat-label>Topic</mat-label>
+            <input matInput placeholder="user_log" formControlName="topic">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <mat-label>Consumer Group</mat-label>
+            <input matInput placeholder="testGroup" formControlName="properties.group.id">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <mat-label>Formats</mat-label>
+            <mat-select formControlName="format">
+                <mat-option *ngFor="let format of formats" value="{{format}}">{{format}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <mat-label>Start Mode</mat-label>
+            <mat-select formControlName="scan.startup.mode">
+                <mat-option *ngFor="let mode of modes" value="{{mode}}">{{mode}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+    <p *ngIf="showSpecificOffset">
+        <mat-form-field>
+            <mat-label>Specific Offset</mat-label>
+            <input matInput placeholder="partition:0,offset:42;partition:1,offset:300" formGroupName="scan.startup.specific-offsets">
+        </mat-form-field>
+    </p>
+    <p *ngIf="showTimestamp">
+        <mat-form-field>
+            <mat-label>Specific Timestamp</mat-label>
+            <input matInput placeholder="0" formGroupName="scan.startup.timestamp-millis">
+        </mat-form-field>
+    </p>
+</form>

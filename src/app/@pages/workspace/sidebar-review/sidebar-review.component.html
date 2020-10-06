@@ -1,0 +1,15 @@
+<div class="files-container">
+    <div class="files-header">
+        <span class="noselect">Review</span>
+    </div>
+
+    <div class="files-sessions">
+        <div class="info-header session" (click)="toggleReview()">
+            <svg-icon class="icon" [src]="ShowReview | ArrowDirectionPipe"></svg-icon>
+            <span class="noselect">Promoted</span>
+        </div>
+        <div class="files-sessions-content" *ngIf="ShowReview">
+            <app-workspace-tree [data]="review$"></app-workspace-tree>
+        </div>
+    </div>
+</div>

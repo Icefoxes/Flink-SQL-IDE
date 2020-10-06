@@ -1,0 +1,66 @@
+@import "../../../@core/style/variable";
+
+.files-container {
+    background-color: $sidebar-content-bg;
+    height: calc(100vh - #{$header-height} - #{$status-bar-height});
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    span,
+    .prefix-icon {
+        color: $font-color;
+        -webkit-transform-origin-x: 0;
+        transform: scale(0.7);
+        font-size: 10px;
+    }
+
+    // shared
+    .action-items {
+        position: absolute;
+        right: 0.2rem;
+        display: flex;
+        align-items: center;
+        .icon {
+            display: flex;
+            margin: 0 0.2rem;
+        }
+    }
+    .files-header {
+        display: flex;
+        align-items: center;
+        padding: 0px 0px 0 12px;
+        margin: 0.2rem 0;
+        position: relative;
+        span {
+            transform: scale(0.8);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+
+    .search-content {
+        display: flex;
+        align-items: center;
+
+        .input-container {
+            position: relative;
+            background-color: #3c3c3c;
+            width: 100%;
+            display: flex;
+            align-items: center;
+
+            .input-text {
+                background-color: #3c3c3c;
+                box-shadow: none;
+                outline: none;
+                color: #cccccc;
+                width: 70%;
+                border: none;
+                padding: 4px;
+            }
+        }
+    }
+}
